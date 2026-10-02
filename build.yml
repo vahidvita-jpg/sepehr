@@ -1,0 +1,27 @@
+name: build-windows
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Publish (net48, runs on Windows 7 SP1+)
+        run: dotnet publish src/Sepehr.Desktop/Sepehr.Desktop.csproj -c Release -o publish
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+      - name: Build Setup.exe
+        run: '& "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\Sepehr.iss'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Sepehr-Setup
+          path: installer/Output/Setup.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Sepehr-portable-folder
+          path: publish/
