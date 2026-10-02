@@ -1,0 +1,16 @@
+<Window x:Class="Sepehr.Desktop.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ورود - سپهر" Width="420" Height="420" WindowStartupLocation="CenterScreen"
+        FlowDirection="RightToLeft" FontFamily="Tahoma" FontSize="14" Background="{StaticResource Surface}" ResizeMode="NoResize">
+    <StackPanel Margin="32" VerticalAlignment="Center">
+        <TextBlock x:Name="SchoolText" FontSize="20" FontWeight="Bold" Foreground="{StaticResource Primary}" TextAlignment="Center" TextWrapping="Wrap"/>
+        <TextBlock Text="ورود به سامانه" Margin="0,6,0,22" TextAlignment="Center" Foreground="#555"/>
+        <TextBlock Text="نام کاربری"/>
+        <TextBox x:Name="UserBox" Padding="8" Margin="0,4,0,12" FlowDirection="LeftToRight"/>
+        <TextBlock Text="رمز عبور"/>
+        <PasswordBox x:Name="PassBox" Padding="8" Margin="0,4,0,12"/>
+        <TextBlock x:Name="ErrorText" Foreground="#C00000" TextWrapping="Wrap" Margin="0,0,0,10"/>
+        <Button Content="ورود" Style="{StaticResource PrimaryButton}" Click="Login_Click" IsDefault="True"/>
+    </StackPanel>
+</Window>
