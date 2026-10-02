@@ -1,5 +1,6 @@
+# build
 name: build-windows
- on:
+on:
   workflow_dispatch:
   push:
     branches: [ main, master ]
